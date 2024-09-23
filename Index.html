@@ -49,10 +49,10 @@
     let arr = [];
     // console.log(arr);
 let e;
-button010.addEventListener('click',function(e){
+button010.addEventListener('click',function anant(e){
 e.preventDefault();
 ////////
-if(fn.value||sn.value &&ps.value|| coun.value !=0){
+if(fn.value!==""||sn.value!=="" &&ps.value!==""|| coun.value!==""){
 
 let player={
     firstname:fn.value,
@@ -70,6 +70,7 @@ let player={
 else{
     alert("Please Fill the Details");
 }
+
 //////////////////////////////////
 })
 
@@ -106,10 +107,21 @@ cell6.addEventListener('click',function(){
     row.innerHTML= " "
 })
 cell7.addEventListener('click', function(){
-    cell5.innerHTML =  Number(player.score) +  Number(5)
+    // cell5.innerHTML =  Number(cell5.innerHTML) +  Number(5)
+    player.score += 5;
+    sortTable()
+    mytable()
+console.log(cell5.innerHTML);
+
 })
 cell8.addEventListener('click', function(){
-    cell5.innerHTML =  Number(player.score) -  Number(5)
+    // cell5.innerHTML =  Number(cell5.innerHTML) -  Number(5)
+    player.score -= 5;
+
+    sortTable()
+    mytable()
+
+
 
 })
 
