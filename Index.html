@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeaderBoard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+       <div class="playerform">
+        <input id="Firstn" type="text" placeholder="First Name">
+        <input id="Secondn" type="text" placeholder="second Name">
+        <!-- <input  id="country" type="text" placeholder="Country"> -->
+        <select name="" id="country">
+            <option value="">Select Country</option>
+
+            <option value="India">India</option>
+            <option value="Australia">Australia</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="West-Indies">West-Indies</option>
+            <option value="Japan">Japan</option>
+
+        </select>
+        <input id="Players" type="number" placeholder="Player Score">
+    </div>
+    <div class="btn">
+    <button >Add Player</button>
+</div>
+    <div id="naming">
+        <table>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+<script>
+    let fn = document.querySelector("#Firstn")
+    let sn = document.querySelector("#Secondn")
+    let coun = document.querySelector("#country")
+    let ps = document.querySelector("#Players")
+    let showme = document.querySelector("#naming")
+    let tabels = document.querySelector("table")
+    let tablebody=document.querySelector("tbody")
+    let button010 = document.querySelector("button")
+    let j = 0;
+    let arr = [];
+    // console.log(arr);
+let e;
+button010.addEventListener('click',function(e){
+e.preventDefault();
+////////
+let player={
+    firstname:fn.value,
+    secondname:sn.value,
+         countryname:coun.value,
+        score:Number(ps.value),
+}
+    arr.push(player);
+
+    sortTable();
+
+    mytable()
+    resetForm()
+    
+//////////////////////////////////
+})
+
+function sortTable(){
+(arr.sort((a, b) =>   b.score - a.score));
+}
+    
+
+
+function mytable(){
+    tablebody.innerHTML = ''; 
+arr.forEach((player,index) =>{
+
+var row = tablebody.insertRow();
+var cell1 = row.insertCell(0);
+var cell2 = row.insertCell(1);
+var cell3 = row.insertCell(2);
+var cell4 = row.insertCell(3);
+var cell5 = row.insertCell(4);
+var cell6 = row.insertCell(5);
+var cell7 = row.insertCell(6);
+var cell8 = row.insertCell(7);
+// //////
+cell1.innerHTML = index+1 ;
+cell2.innerHTML = player.firstname;
+cell3.innerHTML = player.secondname;
+cell4.innerHTML = player.countryname;
+cell5.innerHTML = player.score;
+cell6.innerHTML = "Delete" ; 
+cell7.innerHTML = "+5";
+cell8.innerHTML = "-5";
+////
+
+cell6.addEventListener('click',function(){
+    row.innerHTML= " "
+})
+cell7.addEventListener('click', function(){
+    cell5.innerHTML =  Number(player.score) +  Number(5)
+})
+cell8.addEventListener('click', function(){
+    cell5.innerHTML =  Number(player.score) -  Number(5)
+
+})
+
+});
+}
+function resetForm() {
+            fn.value = '';
+            sn.value = '';
+            coun.value = '';
+            ps.value = '';
+        }
+</script>
+</html>
