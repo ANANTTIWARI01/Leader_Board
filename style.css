@@ -19,12 +19,17 @@ input{
 }
 
 .container{
-    width: 70%;
+    width: 90%;
     margin: 0 auto;
     background-color: rgba(0,0,0,0.6);
     backdrop-filter: blur(0.6);
     color: #fff;
     border-radius: 10px;
+    /* padding: 10px 20px; */
+}
+.playerform {
+    text-align: center;
+    padding: 10px;
 }
 
 .container h1{
