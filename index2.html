@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leader_Board</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body> <div class="wrapper">
+    <div class="btn">
+        <button >Add Player</button>
+       </div>
+    <div class="playerform">
+     <input id="Firstn" type="text" placeholder="First Name">
+     <input id="Secondn" type="text" placeholder="second Name">
+     <!-- <input  id="country" type="text" placeholder="Country"> -->
+     <select name="" id="country">
+         <option value="">Select Country</option>
+
+         <option value="India">India</option>
+         <option value="Australia">Australia</option>
+         <option value="Pakistan">Pakistan</option>
+         <option value="West-Indies">West-Indies</option>
+         <option value="Japan">Japan</option>
+
+     </select>
+     <input id="Players" type="number" placeholder="Player Score">
+     
+ </div>
+ <div class="naming">
+</div>
+
+</div>
+
+
+<script>
+
+    let fn = document.querySelector("#Firstn")
+    let sn = document.querySelector("#Secondn")
+    let coun = document.querySelector("#country")
+    let ps = document.querySelector("#Players")
+    let showme = document.querySelector(".naming")
+    let button010 = document.querySelector("button")
+    // let j = 0;
+    let arr = [];
+    // let e;
+ 
+    
+ 
+    button010.addEventListener('click', function(e){
+           e.preventDefault();
+
+let player = {
+    id:arr.length+1,
+    FirstName: fn.value,
+    SecondName: sn.value,
+    Country: coun.value,
+    Score: Number(ps.value),
+}
+
+arr.push(player)
+
+sortdata()
+makedata()
+cleardata()
+
+    })
+
+   function sortdata(){
+    arr.sort((a,b) =>
+    {return Number(b.Score) -Number(a.Score)})
+   }
+
+    function makedata(){
+        showme.innerHTML = '';
+        
+        arr.forEach((player,index) =>{
+
+        let maindiv = document.createElement("div")
+        let para01 = document.createElement("p")
+        para01.innerHTML = index +1
+
+        let para = document.createElement("p")
+        para.innerHTML = player.FirstName
+        console.log(para.innerHTML);
+        
+        
+        let para1 = document.createElement("p")
+        para1.innerHTML = player.SecondName
+        
+        let para2 = document.createElement("p")
+        para2.innerHTML = player.Country
+        
+        let para3 = document.createElement("p")
+        para3.innerHTML = player.Score
+       
+        let btn1 = document.createElement("button")
+        btn1.innerHTML = "Delete"
+
+        let btn2 = document.createElement("button")
+        btn2.innerHTML = "+5"
+        
+        let btn3 = document.createElement("button")
+        btn3.innerHTML = "-5"
+        
+        maindiv.append(para01,para,para1,para2,para3,btn1,btn2,btn3)
+        maindiv.classList="maindiv"
+        showme.append(maindiv)
+
+        
+    btn1.addEventListener('click',function(id){
+            arr = arr.filter((p) => p.id !== player.id);          
+            sortdata()
+            makedata()
+        })
+
+        btn2.addEventListener('click',function(){
+            player.Score +=5
+            sortdata()
+            makedata()
+        })
+
+        btn3.addEventListener('click',function(){
+            player.Score -=5
+            sortdata()
+            makedata()
+        })   
+})
+}
+
+
+
+  
+        function cleardata(){
+        fn.value= ""
+        sn.value = ""
+        coun.value = ""
+        ps.value = ""
+        }
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

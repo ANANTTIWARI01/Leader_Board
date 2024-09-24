@@ -53,7 +53,12 @@ button010.addEventListener('click',function anant(e){
 e.preventDefault();
 ////////
 if(fn.value!==""||sn.value!=="" &&ps.value!==""|| coun.value!==""){
+if(ps.value<0){
+    alert("Negative score is not allowed")
+    // row.innerHTML= " "
+    
 
+}
 let player={
     firstname:fn.value,
     secondname:sn.value,
@@ -104,14 +109,16 @@ cell8.innerHTML = "-5";
 ////
 
 cell6.addEventListener('click',function(){
-    row.innerHTML= " "
+    // row.innerHTML= " "
+    tablebody.removeChild(row)
+    mytable()
+    console.log(tablebody)
 })
 cell7.addEventListener('click', function(){
     // cell5.innerHTML =  Number(cell5.innerHTML) +  Number(5)
     player.score += 5;
     sortTable()
     mytable()
-console.log(cell5.innerHTML);
 
 })
 cell8.addEventListener('click', function(){
