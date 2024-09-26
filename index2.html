@@ -49,7 +49,10 @@
  
     button010.addEventListener('click', function(e){
            e.preventDefault();
-
+           if(fn.value!==""||sn.value!=="" &&ps.value!==""|| coun.value!==""){
+if(ps.value<0){
+    alert("Negative score is not allowed")
+}
 let player = {
     id:arr.length+1,
     FirstName: fn.value,
@@ -63,7 +66,12 @@ arr.push(player)
 sortdata()
 makedata()
 cleardata()
+           }
+   else {
+    alert("Please Fill the Details");
 
+}
+           
     })
 
    function sortdata(){
